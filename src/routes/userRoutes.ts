@@ -3,7 +3,7 @@ import getUserDao from "../dao/getUserDao";
 
 const userRoutes = Router();
 
-userRoutes.get("api/blog", async (req, res) => {
+userRoutes.get("/api/users", async (req, res) => {
   try {
     const users = await getUserDao().findAll();
 
@@ -11,14 +11,13 @@ userRoutes.get("api/blog", async (req, res) => {
     res.send(users || []);
   } catch (err) {
     console.error(err);
-    res.send();
+    res.send([]);
   }
 });
 
-userRoutes.post("/api/blog", async (req, res) => {
+userRoutes.post("/api/users", async (req, res) => {
   try {
     const users = await getUserDao().create(req.body);
-
     res.send(users);
   } catch (err) {
     console.error(err);

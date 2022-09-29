@@ -1,0 +1,4 @@
+CREATE TABLE users(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255)
+)

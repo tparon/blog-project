@@ -1,5 +1,5 @@
 import User from "../models/User";
-import UserRowDataPacket from "../models/UserRowDataPacket";
+import CommentRowDataPacket from "../models/UserRowDataPacket";
 import mapToUser from "../mappers/mapToUser";
 import { OkPacket } from "mysql2";
 import { DbPool } from "../datasources/db";
@@ -9,7 +9,7 @@ class UserDao implements Dao<number, User> {
   constructor(private db: DbPool) {}
 
   async findAll() {
-    const [rows] = await this.db.query<UserRowDataPacket[]>(
+    const [rows] = await this.db.query<CommentRowDataPacket[]>(
       "SELECT * FROM users"
     );
 

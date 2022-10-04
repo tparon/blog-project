@@ -25,4 +25,15 @@ commentRoutes.post("/api/comments", async (req, res) => {
   }
 });
 
+commentRoutes.post("/api/comments/delete", async (req, res) => {
+  const { id } = req.body;
+  try {
+    await getCommentDao().remove(Number(id));
+    res.send("Deleted");
+  } catch (err) {
+    console.error(err);
+    res.send("Error.");
+  }
+});
+
 export default commentRoutes;

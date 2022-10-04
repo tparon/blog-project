@@ -25,4 +25,15 @@ userRoutes.post("/api/users", async (req, res) => {
   }
 });
 
+userRoutes.post("/api/users/delete", async (req, res) => {
+  const { id } = req.body;
+  try {
+    await getUserDao().remove(Number(id));
+    res.send("Deleted");
+  } catch (err) {
+    console.error(err);
+    res.send("Error.");
+  }
+});
+
 export default userRoutes;

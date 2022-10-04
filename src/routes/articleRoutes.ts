@@ -25,4 +25,15 @@ articleRoutes.post("/api/articles", async (req, res) => {
   }
 });
 
+articleRoutes.post("/api/articles/delete", async (req, res) => {
+  const { id } = req.body;
+  try {
+    await getArticleDao().remove(Number(id));
+    res.send("Deleted");
+  } catch (err) {
+    console.error(err);
+    res.send("Error.");
+  }
+});
+
 export default articleRoutes;
